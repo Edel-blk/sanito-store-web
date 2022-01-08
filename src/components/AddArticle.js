@@ -1,49 +1,113 @@
 import React from 'react';
-import { Button, Form } from 'semantic-ui-react';
+import { Button, Form, Dropdown, Header, Container } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { addArticles } from '../actions';
+import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
-
-export default function AddArticle() {
-
+export function AddArticle(props) {
     let [input, setInput] = React.useState({
-        name: '', 
-        inventory: '',
-        price: ''
+        name: null, 
+        inventory: null,
+        price: null,
+        category: null
     });
+
+    const notifyBoxes = () =>{
+        toast('Fill up all the inputs');
+    }
 
     let handleChange = (data) => {
         setInput((prev) => ({...prev, [data.name]:data.value}));
     }
 
-    let handleSubmit = (e) => {
+    let validateSubmit = () => {
+        if (!input.name || !input.inventory || !input.price || !input.category) {
+            return true;
+        }
+        return false;
+    }
+
+    let handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(input);
-        setInput({ 
-            name: '', 
-            inventory: '',
-            price: ''
+        const response = await axios.post('http://localhost:3005/items/add', input);
+        if (response.data.success) {
+            props.history.push('/home');
+        } else{
+
+        }
+    }
+
+    
+    let options = [];
+    if(!props.categories.length > 0){
+        options = [
+            {
+                text: 'No category',
+                value: 'No category',
+                key: 0
+            }
+        ]
+    } else {
+        options = props.categories.map((item, index) => {
+            return {
+                text: item.category,
+                value: item.category,
+                key: `dropdown${index}`
+            };
         });
     }
 
     return (
         <React.Fragment>
-            <div>Create Article</div>
+            <Header as='h2' disabled textAlign='center'>
+                Add New Item
+            </Header>
             <br/>
+            <Container>
             <Form>
                 <Form.Field>
-                <label>Item Name</label>
-                <Form.Input placeholder='Item Name'  name={'name'} value={input.name} onChange={(e, data) => handleChange(data)} />
+                    <label>Item Name</label>
+                    <Form.Input placeholder='Item Name' type='string' name={'name'} value={input.name} onChange={(e, data) => handleChange(data)} />
                 </Form.Field>
                 <Form.Field>
-                <label>Inventory</label>
-                <Form.Input placeholder='Inventory'  name={'inventory'} value={input.inventory} onChange={(e, data) => handleChange(data)}/>
+                    <label>Inventory</label>
+                    <Form.Input placeholder='Inventory' type='integer' name={'inventory'} value={input.inventory} onChange={(e, data) => handleChange(data)}/>
                 </Form.Field>
                 <Form.Field>
-                <label>Price</label>
-                <Form.Input placeholder='Price'  name={'price'} value={input.price} onChange={(e, data) => handleChange(data)}/>
+                    <label>Price</label>
+                    <Form.Input placeholder='Price' type='float' name={'price'} value={input.price} onChange={(e, data) => handleChange(data)}/>
                 </Form.Field>
-                <Button type='submit' onClick={(e) => handleSubmit(e)}>Submit</Button>
+                <label>Category</label>
+                <Dropdown
+                    placeholder='Select Category'
+                    fluid
+                    selection
+                    options={options} 
+                    name={'category'}
+                    value={input.category} 
+                    onChange={(e, data) => handleChange(data)}
+                />
+                <br/>
+                <Button disabled={validateSubmit()} type='submit' onClick={(e) => handleSubmit(e)}>Submit</Button>
             </Form>
+            </Container>
+            <Toaster />
         </React.Fragment>
 
     )
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        add : (input) => dispatch(addArticles(input))
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        categories: state.categories
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddArticle);

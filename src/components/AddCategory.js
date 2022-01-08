@@ -1,54 +1,41 @@
 import React from 'react';
 import {addCategory} from '../actions';
 import { connect } from 'react-redux';
-import { Button, Checkbox, Form } from 'semantic-ui-react';
-import { Input } from 'semantic-ui-react';
+import { Button, Container, Form, Header } from 'semantic-ui-react';
+import axios from 'axios';
 
-export function AddCategory({add}) {
+export function AddCategory(props) {
 
     let [input, setInput] = React.useState({
-        name: ''
+        category: ''
     });
 
-    let handleChange = (e) => {
+    let handleChange = (data) => {
+        setInput((prev) => ({...prev, [data.name]:data.value}))
+    }
+
+    let handleSubmit = async (e) => {
         e.preventDefault();
-        setInput((prev) => ({...prev, [e.target.name]:e.target.value}))
+        const response = await axios.post('http://localhost:3005/category/add', input);
+        if (response.data.success) {
+            props.history.push('/home');
+        }
     }
 
-
-    let handleSubmit = (e) => {
-        // e.preventDefault();
-        
-        // add(input);
-        console.log(e);
-        setInput({ 
-            name: ''
-        });
-    }
-
-    let onChange = (data) => {
-        console.log(data.value);
-
-    }
     return (
         <React.Fragment>
-             <div>Create Category</div>
+            <Header as='h2' disabled textAlign='center'>
+                Create New Category
+            </Header>
             <br/>
-            {/* <Input placeholder='Search...' onChange={(e, data) => onChange(data)}/> */}
-            <Form onSubmit={(e, data) => handleSubmit(data)}>
+            <Container>
+            <Form>
                 <Form.Field>
-                <label>First Name</label>
-                <Form.Input placeholder='First Name' />
+                    <Form.Input placeholder='New Category'  name={'category'} value={input.category} onChange={(e, data) => handleChange(data)} />
                 </Form.Field>
-                <Form.Field>
-                <label>Last Name</label>
-                <Form.Input placeholder='Last Name' />
-                </Form.Field>
-                <Form.Field>
-                <Checkbox label='I agree to the Terms and Conditions' />
-                </Form.Field>
-                <Button type='submit'>Submit</Button>
+                <Button type='submit' onClick={(e) => handleSubmit(e)}>Submit</Button>
             </Form>
+            </Container>
         </React.Fragment>
 
     )

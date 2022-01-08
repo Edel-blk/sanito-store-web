@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+Ejercicio teórico practico
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Realizar una aplicación web para el control de inventarios, esta aplicación web servirá para que un
+usuario pueda ingresar una lista de artículos con sus categorías y el número de artículos disponibles
 
-## Available Scripts
 
-In the project directory, you can run:
+Requerimientos técnicos
 
-### `npm start`
+• React web como framework principal
+• Usar redux para manejo de state de la aplicación
+• Semantic UI para maquetación (Opcional) (https://react.semantic-ui.com/)
+• Crear una API en Node JS para el guardado de los datos con cualquier DB (Opcional)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Requerimientos funcionales
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+• Se mostrarán tres vistas diferentes, la vista principal sera el listado de artículos del inventario, y
+las vistas secundarias serán los formularios para dar de alta las categorías de los artículos y el
+formulario de alta de un articulo en especifico
+• El listado de artículos debe mostrar un mensaje “No se han agregado artículos” en caso de no
+haber artículos
+• En el alta de categorías solo se capturara el nombre de la categoría, por ejemplo Linea blanca,
+Jugueteria, Herramientas, etc
+• En el alta de artículos se capturaran el nombre del articulo, la categoría, unidades disponibles y
+precio
+• Al dar de alta un articulo, el campo de las categorías sera un dropdown donde el usuario pueda
+seleccionar las categorías dadas de alta, en caso de no existir ninguna categoría se mostrara una
+única opción por default “Sin categoría”
+• Una vez dada de alta un articulo en el formulario, se redireccionara al usuario al listado de
+artículos
+• En el listado de artículos cada row del listado mostrara todos los campos del articulo, su
+nombre, categoría, unidades disponibles y precio, ademas de botones para borrar o editar el
+articulo
+• El listado de artículos contará con un filtro por categoría para mostrar unicamente los artículos
+de linea blanca por ejemplo

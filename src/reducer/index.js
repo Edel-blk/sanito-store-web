@@ -1,20 +1,22 @@
  const initialState = {
-    articles: ['Datos de inventario'], 
+    articles: [], 
     categories: []
  }
  
  export default function rootReducer(state=initialState, action){
     switch(action.type){
         case 'ADD_CATEGORY':
+            console.log('ACTION GREEN', action)
             return {
                 ...state,
-                categories: [...state.categories, action.payload]
+                categories: action.payload
             }
         case 'ADD_ARTICLE':
+            console.log('ACTION RED', action)
             return {
                 ...state,
-                articles: [...state.articles, action.payload]
-            }    
+                articles: action.payload
+            } 
         default: return {...state}    
     }
 }
