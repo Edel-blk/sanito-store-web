@@ -64,9 +64,9 @@ export function Home (props) {
         <React.Fragment>
             <br/>
             <Divider horizontal>
-                <Header as='h4' as='h2' disabled>
+                <Header as='h4' disabled>
                     <Icon name='archive' />
-                    Inventory
+                    Sanito Store Inventario
                 </Header>
             <br/>
             </Divider>

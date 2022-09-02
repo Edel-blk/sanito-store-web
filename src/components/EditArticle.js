@@ -69,24 +69,24 @@ function EditArticle(data) {
     >
       <Header icon>
         <Icon name='edit outline' />
-        Edit Item : {data.data.name}
+        Editar Articulo : {data.data.name}
       </Header>
       <Modal.Content>
         <p>
         <Form  error>
           <Form.Field required>
-            <label>Item Name</label>
+            <label>Nombre del Articulo</label>
             <Form.Input default={data.data.name} type='string' name={'name'} value={input.name} onChange={(e, data) => handleChange(data)} />
           </Form.Field>
           <Form.Field required>
-            <label>Inventory</label>
+            <label>Inventario</label>
             <Form.Input placeholder={data.data.inventory} type='integer' name={'inventory'} value={input.inventory} onChange={(e, data) => handleChange(data)}/>
           </Form.Field>
           <Form.Field required>
-            <label>Price</label>
+            <label>Precio</label>
             <Form.Input placeholder={data.data.price} type='float' name={'price'} value={input.price} onChange={(e, data) => handleChange(data)}/>
           </Form.Field>
-          <label>Category</label>
+          <label>Categoria</label>
           <br/>
           <Dropdown
               placeholder={data.data.category}
@@ -102,10 +102,10 @@ function EditArticle(data) {
       </Modal.Content>
       <Modal.Actions>
         <Button floated='left' color='red' inverted onClick={(e) => handleCancel(e)}>
-          <Icon name='remove' /> Cancel
+          <Icon name='remove' /> Cancelar
         </Button>
         <Button color='green' inverted onClick={(e) => handleSubmit(e)} disabled={validateSubmit()}>
-          <Icon name='checkmark' /> Submit
+          <Icon name='checkmark' /> Aceptar
         </Button>
       </Modal.Actions>
     </Modal>

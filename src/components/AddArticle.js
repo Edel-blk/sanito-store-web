@@ -61,26 +61,26 @@ export function AddArticle(props) {
     return (
         <React.Fragment>
             <Header as='h2' disabled textAlign='center'>
-                Add New Item
+                Añadir Nuevo Articulo
             </Header>
             <br/>
             <Container>
             <Form>
                 <Form.Field>
-                    <label>Item Name</label>
+                    <label>Nombre Del Articulo</label>
                     <Form.Input placeholder='Item Name' type='string' name={'name'} value={input.name} onChange={(e, data) => handleChange(data)} />
                 </Form.Field>
                 <Form.Field>
-                    <label>Inventory</label>
+                    <label>Inventario</label>
                     <Form.Input placeholder='Inventory' type='integer' name={'inventory'} value={input.inventory} onChange={(e, data) => handleChange(data)}/>
                 </Form.Field>
                 <Form.Field>
-                    <label>Price</label>
+                    <label>Precio</label>
                     <Form.Input placeholder='Price' type='float' name={'price'} value={input.price} onChange={(e, data) => handleChange(data)}/>
                 </Form.Field>
-                <label>Category</label>
+                <label>Categoria</label>
                 <Dropdown
-                    placeholder='Select Category'
+                    placeholder='Selecciona Una Categoria'
                     fluid
                     selection
                     options={options} 
@@ -89,7 +89,7 @@ export function AddArticle(props) {
                     onChange={(e, data) => handleChange(data)}
                 />
                 <br/>
-                <Button disabled={validateSubmit()} type='submit' onClick={(e) => handleSubmit(e)}>Submit</Button>
+                <Button disabled={validateSubmit()} type='submit' onClick={(e) => handleSubmit(e)}>Aceptar</Button>
             </Form>
             </Container>
             <Toaster />

@@ -8,11 +8,11 @@ const Articles = (props) => (
     <Table columns={5}>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>Item</Table.HeaderCell>
-          <Table.HeaderCell>Inventory</Table.HeaderCell>
-          <Table.HeaderCell>Price</Table.HeaderCell>
-          <Table.HeaderCell>Category</Table.HeaderCell>
-          <Table.HeaderCell>Options</Table.HeaderCell>
+          <Table.HeaderCell>Articulo</Table.HeaderCell>
+          <Table.HeaderCell>Inventario</Table.HeaderCell>
+          <Table.HeaderCell>Precio</Table.HeaderCell>
+          <Table.HeaderCell>Categoria</Table.HeaderCell>
+          <Table.HeaderCell>Opciones</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
   

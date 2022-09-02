@@ -25,15 +25,15 @@ export function AddCategory(props) {
     return (
         <React.Fragment>
             <Header as='h2' disabled textAlign='center'>
-                Create New Category
+                Crear Nueva Categoria
             </Header>
             <br/>
             <Container>
             <Form>
                 <Form.Field>
-                    <Form.Input placeholder='New Category'  name={'category'} value={input.category} onChange={(e, data) => handleChange(data)} />
+                    <Form.Input placeholder='Nueva Categoria'  name={'category'} value={input.category} onChange={(e, data) => handleChange(data)} />
                 </Form.Field>
-                <Button type='submit' onClick={(e) => handleSubmit(e)}>Submit</Button>
+                <Button type='submit' onClick={(e) => handleSubmit(e)}>Aceptar</Button>
             </Form>
             </Container>
         </React.Fragment>

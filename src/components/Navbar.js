@@ -18,19 +18,19 @@ export default class Navbar extends Component {
                         name='home'
                         active={activeItem === 'home'}
                         onClick={this.handleItemClick}>
-                        <NavLink to={'/home'}>Home</NavLink>
+                        <NavLink to={'/home'}>Inicio</NavLink>
                     </Menu.Item>
                     <Menu.Item 
                         name='addArticle'
                         active={activeItem === 'addArticle'}
                         onClick={this.handleItemClick}>
-                        <NavLink to={'/add-article'}>Add Article</NavLink>
+                        <NavLink to={'/add-article'}>Añadir Articulo</NavLink>
                     </Menu.Item>  
                     <Menu.Item 
                         name='addCategory'
                         active={activeItem === 'addCategory'}
                         onClick={this.handleItemClick}>
-                        <NavLink to={'/add-category'}>Add Category</NavLink>
+                        <NavLink to={'/add-category'}>Añadir Categoria</NavLink>
                     </Menu.Item>    
                 </Menu>
             </div>

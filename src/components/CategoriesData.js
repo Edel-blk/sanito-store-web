@@ -7,8 +7,8 @@ const Categories = (props) => (
   <Table columns={2}>
     <Table.Header>
       <Table.Row>
-        <Table.HeaderCell>Category</Table.HeaderCell>
-        <Table.HeaderCell>Options</Table.HeaderCell>
+        <Table.HeaderCell>Categoria</Table.HeaderCell>
+        <Table.HeaderCell>Opciones</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
