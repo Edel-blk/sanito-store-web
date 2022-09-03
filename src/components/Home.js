@@ -14,8 +14,6 @@ export function Home (props) {
 
     let [searchCategory, setSearchCategory] = React.useState('');
 
-    console.log('PROPSHOMEEEEEE', props.articles)
-
     useEffect(() => {
         const fetchData = async () => {
             const resultItems = await axios.get(`${API_URL}/items`);
@@ -30,12 +28,11 @@ export function Home (props) {
         };
         fetchData();
     },[isDeleted, isUpdated]);
-    console.log(props);
 
     const filteredItems = props.articles.filter(item => item.category.toLowerCase().includes(searchCategory.toLowerCase()));
 
     const panes = [
-        { menuItem: 'Articles', render: () => 
+        { menuItem: 'Articulos', render: () => 
         <Tab.Pane >
             <div style={{display: 'flex', justifyContent: 'flex-end' }}>
             <Input  placeholder='Search by Category' value={searchCategory} onChange={(e, data) => setSearchCategory(data.value)} />
@@ -46,13 +43,13 @@ export function Home (props) {
                 updateItem={() => setIsUpdated(true)}
             />
         </Tab.Pane> },
-        { menuItem: 'Categories', render: () => 
+        { menuItem: 'Categorias', render: () => 
         <Tab.Pane>
             <Categories 
                 categories={props.categories} 
                 deleteItem={() => setIsDeleted(true)} 
                 updateItem={() => setIsUpdated(true)}
-                />
+            />
         </Tab.Pane> }
     ]
 

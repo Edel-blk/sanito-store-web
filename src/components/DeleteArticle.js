@@ -15,12 +15,10 @@ function DeleteArticle(data) {
             data.deleteItem();
             setOpen(false);
         }
-        console.log('BOTON SUBMIT ELIMINAR ARTICULO', e);
     }
     
     let handleCancel = async (e) => {
         setOpen(false);
-        console.log('BOTON CANCELAR ELIMINAR ARTICULO', e);
     }
     
     return (

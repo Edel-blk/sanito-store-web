@@ -6,20 +6,18 @@ import { API_URL } from '../utils/constants';
 function DeleteCategory(props) {
 
     const [open, setOpen] = React.useState(false)
-    console.log(props.data);
+
     let handleDelete = async (e) => {
         const response = await axios.delete(`${API_URL}/category/delete?categoryId=${props.data._id}`);
-        console.log(response);
+
         if (response.data.success) {
             props.deleteItem();
             setOpen(false);
         }
-        console.log('BOTON SUBMIT ELIMINAR CATEGORIA', e);
     }
     
     let handleCancel = async (e) => {
         setOpen(false);
-        console.log('BOTON CANCELAR ELIMINAR CATEGORIA', e);
     }
     
     return (
