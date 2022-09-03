@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Header, Icon, Modal } from 'semantic-ui-react';
 import axios from 'axios';
+import { API_URL } from '../utils/constants';
 
 
 function DeleteArticle(data) {
@@ -9,7 +10,7 @@ function DeleteArticle(data) {
 
     let handleDelete = async (e) => {
         
-        const response = await axios.delete(`http://localhost:3005/items/delete?itemId=${data.data._id}`);
+        const response = await axios.delete(`${API_URL}/items/delete?itemId=${data.data._id}`);
         if (response.data.success) {
             data.deleteItem();
             setOpen(false);

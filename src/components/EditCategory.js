@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Header, Icon, Modal, Form } from 'semantic-ui-react'
 import axios from 'axios';
+import { API_URL } from '../utils/constants';
 
 function EditCategory(props) {
     const [open, setOpen] = React.useState(false)
@@ -10,7 +11,7 @@ function EditCategory(props) {
     });
 
     let handleSubmit = async (e) => {
-        const response = await axios.put('http://localhost:3005/category/update', {categoryId: props.data._id, newData: input});
+        const response = await axios.put(`${API_URL}/category/update`, {categoryId: props.data._id, newData: input});
         setOpen(false);
         props.updateItem();
     }

@@ -1,13 +1,14 @@
 import React from 'react'
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 import axios from 'axios';
+import { API_URL } from '../utils/constants';
 
 function DeleteCategory(props) {
 
     const [open, setOpen] = React.useState(false)
     console.log(props.data);
     let handleDelete = async (e) => {
-        const response = await axios.delete(`http://localhost:3005/category/delete?categoryId=${props.data._id}`);
+        const response = await axios.delete(`${API_URL}/category/delete?categoryId=${props.data._id}`);
         console.log(response);
         if (response.data.success) {
             props.deleteItem();

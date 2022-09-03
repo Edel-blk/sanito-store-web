@@ -3,6 +3,7 @@ import {addCategory} from '../actions';
 import { connect } from 'react-redux';
 import { Button, Container, Form, Header } from 'semantic-ui-react';
 import axios from 'axios';
+import { API_URL } from '../utils/constants';
 
 export function AddCategory(props) {
 
@@ -16,7 +17,7 @@ export function AddCategory(props) {
 
     let handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await axios.post('http://localhost:3005/category/add', input);
+        const response = await axios.post(`${API_URL}/category/add`, input);
         if (response.data.success) {
             props.history.push('/home');
         }

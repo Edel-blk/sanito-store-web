@@ -5,10 +5,7 @@ import Articles from './ArticlesData';
 import Categories from './CategoriesData';
 import { addArticles, addCategory } from '../actions';
 import axios from 'axios';
-
-const baseUrl = 'https://sanito-store.herokuapp.com/';
-//const baseUrl = 'http://localhost:3005/items';
-
+import { API_URL } from '../utils/constants';
 
 export function Home (props) {
 
@@ -21,9 +18,9 @@ export function Home (props) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const resultItems = await axios.get(baseUrl);
+            const resultItems = await axios.get(`${API_URL}/items`);
             
-            const resultCategories = await axios.get(baseUrl);
+            const resultCategories = await axios.get(`${API_URL}/category`);
 
             setIsUpdated(false);
             setIsDeleted(false);

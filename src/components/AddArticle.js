@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addArticles } from '../actions';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
+import { API_URL } from '../utils/constants';
 
 export function AddArticle(props) {
     let [input, setInput] = React.useState({
@@ -30,7 +31,7 @@ export function AddArticle(props) {
 
     let handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await axios.post('http://localhost:3005/items/add', input);
+        const response = await axios.post(`${API_URL}/items/add`, input);
         if (response.data.success) {
             props.history.push('/home');
         } else{

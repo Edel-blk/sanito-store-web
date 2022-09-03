@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Header, Icon, Modal, Form, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { API_URL } from '../utils/constants';
 
 function EditArticle(data) {
     
@@ -45,7 +46,7 @@ function EditArticle(data) {
   }
   console.log('DATAARTICLESSSS', data)
   let handleSubmit = async (e) => {
-    const response = await axios.put('http://localhost:3005/items/update', {itemId: data.data._id,newData: input});
+    const response = await axios.put(`${API_URL}/items/update`, {itemId: data.data._id,newData: input});
     if (response.data.success) {
       setOpen(false);
       data.updateItem();
